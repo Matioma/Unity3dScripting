@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField]
-    float rotationSpeed;
+    float rotationSpeed=10;
 
 
 
@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     private void MoveForward()
     {
         var forwardInput = Input.GetAxis("Vertical");
+      
         if (forwardInput != 0)
         {
             animator.SetBool("Run", true);
@@ -52,10 +53,19 @@ public class PlayerController : MonoBehaviour
 
     void Rotate() {
         float horizontalInput = Input.GetAxis("Horizontal");
-        float mouseX = Input.GetAxis("Mouse X");
+        
+        transform.Rotate(new Vector3(0, horizontalInput * rotationSpeed * Time.deltaTime,0));
+    }
 
-        Debug.Log(mouseX);
+    bool isOnGround() {
+        RaycastHit raycastHit;
+        Debug.DrawRay(transform.position, Vector3.down);
 
-        transform.Rotate(new Vector3(0, mouseX * rotationSpeed * Time.deltaTime,0));
+        if (Physics.Raycast(transform.position, Vector3.down, out raycastHit, 10f))
+        {
+            return true;
+        }
+        return false;
+    
     }
 }
