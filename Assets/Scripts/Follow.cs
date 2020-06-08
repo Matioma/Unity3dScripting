@@ -4,23 +4,32 @@ using UnityEngine;
 
 public class Follow : MonoBehaviour
 {
-    Transform target;
+    public Transform target;
 
     [SerializeField]
     float sensitivity;
 
 
+    [SerializeField]
+    float returnCameraSpeed;
 
-    Vector3 initialRotation;
-    Vector3 initialPosition;
+
+
+
+    Vector3 offset;
+
+    Quaternion defaultRotation;
 
     
     void Start()
     {
-        target = transform.parent;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
 
-        initialRotation =transform.localEulerAngles;
-        initialPosition = transform.localPosition;
+
+        defaultRotation = transform.rotation;
+        offset = transform.position - target.position;
+
+
     }
 
     // Update is called once per frame
@@ -30,17 +39,21 @@ public class Follow : MonoBehaviour
         {
             float mouseX = Input.GetAxis("Mouse X");
 
-            transform.RotateAround(target.position, Vector3.up, mouseX * sensitivity * Time.deltaTime);
+            Quaternion targetYRotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y+ mouseX * sensitivity*Time.deltaTime, 0);
+
+            transform.position = target.position + targetYRotation * offset;
+            transform.rotation = targetYRotation*defaultRotation;
         }
         else {
-            float scallingFactor =1;
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(initialRotation), Time.deltaTime / scallingFactor);
+            Quaternion targetYRotation = Quaternion.Euler(0, target.rotation.eulerAngles.y, 0);
 
-            transform.localPosition = Vector3.Lerp(transform.localPosition, initialPosition, Time.deltaTime/scallingFactor);
 
-            //transform.localRotation=Quaternion.Euler(initialRotation);
-            //transform.localPosition = initialPosition;
+            //transform.position = Vector3.Lerp(transform.position, target.position + targetYRotation * offset, returnCameraSpeed * Time.deltaTime);
+            //transform.rotation = Quaternion.Lerp(transform.rotation, targetYRotation * defaultRotation, returnCameraSpeed * Time.deltaTime);
+            
+            
+            transform.position = target.position + targetYRotation * offset;
+            transform.rotation = targetYRotation * defaultRotation;
         }
-       
     }
 }
