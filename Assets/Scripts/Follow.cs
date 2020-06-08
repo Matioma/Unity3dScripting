@@ -26,7 +26,7 @@ public class Follow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire2"))
+        if (Input.GetButton("Fire3"))
         {
             float mouseX = Input.GetAxis("Mouse X");
 

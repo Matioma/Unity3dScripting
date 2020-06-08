@@ -1,6 +1,7 @@
 ﻿
 using UnityEngine;
 
+[RequireComponent(typeof(AbilityManager))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
@@ -11,22 +12,62 @@ public class PlayerController : MonoBehaviour
     float rotationSpeed=10;
 
 
+    public Vector3 MoveVector { get; set; }
+
+
+
+
 
 
     Animator animator;
+    Rigidbody rigidbody;
+
+
+
+    [SerializeField]
+    float consecutiveInputTime = 0;
+    float consecutiveInputTimer;
+
+    bool pressedBackTwice;
+
     void Start()
     {
+        consecutiveInputTimer = 0;
         animator = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody>();
+    }
 
+
+    private void FixedUpdate()
+    {
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButtonDown("DashLeft")) {
+            GetComponent<AbilityManager>().DashLeft();
+        }
+        if (Input.GetButtonDown("DashRight"))
+        {
+            GetComponent<AbilityManager>().DashRight();
+        }
+        if (pressedBackTwice) {
+            GetComponent<AbilityManager>().DashBack();
+            pressedBackTwice = false;
+        }
+
+
+        pressedBackTwice = IsDashBackTriggered();
+        consecutiveInputTimer -= Time.deltaTime;
+
         Attack();
         MoveForward();
         Rotate();
     }
+
+
 
     private void MoveForward()
     {
@@ -40,7 +81,8 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Run", false);
         }
-        transform.Translate(Vector3.forward * forwardInput * MaxSpeed);
+
+        rigidbody.velocity =new Vector3(0,rigidbody.velocity.y,0)+ transform.forward * forwardInput * MaxSpeed;
     }
 
     private void Attack()
@@ -52,8 +94,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Rotate() {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        
+        float horizontalInput = Input.GetAxis("Horizontal");      
         transform.Rotate(new Vector3(0, horizontalInput * rotationSpeed * Time.deltaTime,0));
     }
 
@@ -68,4 +109,22 @@ public class PlayerController : MonoBehaviour
         return false;
     
     }
+
+
+    bool IsDashBackTriggered() {
+        if (Input.GetButtonDown("S"))
+        {
+            if (consecutiveInputTimer < 0)
+            {
+                consecutiveInputTimer = consecutiveInputTime;
+            }
+            else {
+                consecutiveInputTimer = -1;
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }

@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1bf030d2a2a52c458d60233f229a2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 913641381072637437}
   sensitivity: 180
 --- !u!1 &913641381072277505
 GameObject:
@@ -4468,6 +4467,7 @@ GameObject:
   - component: {fileID: 629955090}
   - component: {fileID: 629955091}
   - component: {fileID: 629955089}
+  - component: {fileID: 2575462740799454866}
   m_Layer: 0
   m_Name: Pref_Player
   m_TagString: Untagged
@@ -4525,7 +4525,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &629955091
 CapsuleCollider:
@@ -4553,8 +4553,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fed41aface157847a1ecc5695a1129c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpeed: 0.1
+  MaxSpeed: 10
   rotationSpeed: 360
+  consecutiveInputTime: 1
+--- !u!114 &2575462740799454866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913641381072277981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af71f428b7ea9d44aa5239af01dd0a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashDistance: 2700
+  dashTime: 0.2
 --- !u!1 &913641381072277983
 GameObject:
   m_ObjectHideFlags: 0
