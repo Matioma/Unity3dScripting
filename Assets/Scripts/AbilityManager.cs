@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -25,11 +24,31 @@ public class AbilityManager : MonoBehaviour
     Rigidbody rb;
 
 
+    List<Weapon> unitWeapons;
+
+    Sword sword;
+    Shield shield;
+
 
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        GetWeaponReferences();
+    }
+
+
+    void GetWeaponReferences() {
+        foreach (var obj in GetComponentsInChildren<Weapon>()) {
+            if (obj is Sword)
+            {
+                sword = obj as Sword;
+            }
+            else if (obj is Shield) {
+                shield = obj as Shield;
+            }
+        }
+    
     }
 
 
@@ -76,6 +95,29 @@ public class AbilityManager : MonoBehaviour
     {
         timer = 0;
         dashDirection = direction;
+    }
+
+
+    public void AttackShield() {
+        if (shield.HitsSomething()) {
+            Destroy(shield.OverLappedObject);
+            Debug.Log("Hit Shield");
+        }
+
+
+       
+    }
+
+    public void AttackSword()
+    {
+        if (sword.HitsSomething())
+        {
+            Destroy(sword.OverLappedObject);
+            Debug.Log("Hit Sword");
+            //sword.OverLappedObject.
+
+        }
+       
     }
 
 

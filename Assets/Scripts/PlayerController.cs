@@ -30,6 +30,12 @@ public class PlayerController : MonoBehaviour
 
     bool pressedBackTwice;
 
+    private void Awake()
+    { 
+      
+    }
+
+
     void Start()
     {
         consecutiveInputTimer = 0;
@@ -72,8 +78,6 @@ public class PlayerController : MonoBehaviour
         MoveForward();
         Rotate();
     }
-
-
 
     private void MoveForward()
     {

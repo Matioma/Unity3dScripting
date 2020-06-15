@@ -23,7 +23,7 @@ public class Follow : MonoBehaviour
     
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        target = FindObjectOfType<PlayerController>().transform;
 
 
         defaultRotation = transform.rotation;
