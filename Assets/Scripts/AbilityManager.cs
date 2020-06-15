@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class AbilityManager : MonoBehaviour
 {
+    public int damage=4;
+
     [SerializeField]
     float dashDistance=0;
     [SerializeField]
@@ -100,8 +102,11 @@ public class AbilityManager : MonoBehaviour
 
     public void AttackShield() {
         if (shield.HitsSomething()) {
-            Destroy(shield.OverLappedObject);
-            Debug.Log("Hit Shield");
+            shield.OverLappedObject.GetComponent<Stats>()?.DealDamage(damage);
+
+
+            //Destroy(shield.OverLappedObject);
+            //Debug.Log("Hit Shield");
         }
 
 
@@ -112,8 +117,9 @@ public class AbilityManager : MonoBehaviour
     {
         if (sword.HitsSomething())
         {
-            Destroy(sword.OverLappedObject);
-            Debug.Log("Hit Sword");
+            sword.OverLappedObject.GetComponent<Stats>()?.DealDamage(damage);
+            //Destroy(sword.OverLappedObject);
+            //Debug.Log("Hit Sword");
             //sword.OverLappedObject.
 
         }

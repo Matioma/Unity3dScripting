@@ -6,8 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     float MaxSpeed;
-
-
     [SerializeField]
     float rotationSpeed=10;
 
