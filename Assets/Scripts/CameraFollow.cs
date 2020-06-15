@@ -2,18 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Follow : MonoBehaviour
+public class CameraFollow : MonoBehaviour
 {
     public Transform target;
 
     [SerializeField]
     float sensitivity;
-
-
     [SerializeField]
     float returnCameraSpeed;
-
-
 
 
     Vector3 offset;
@@ -45,11 +41,6 @@ public class Follow : MonoBehaviour
         else {
             Quaternion targetYRotation = Quaternion.Euler(0, target.rotation.eulerAngles.y, 0);
 
-
-            //transform.position = Vector3.Lerp(transform.position, target.position + targetYRotation * offset, returnCameraSpeed * Time.deltaTime);
-            //transform.rotation = Quaternion.Lerp(transform.rotation, targetYRotation * defaultRotation, returnCameraSpeed * Time.deltaTime);
-            
-            
             transform.position = target.position + targetYRotation * offset;
             transform.rotation = targetYRotation * defaultRotation;
         }

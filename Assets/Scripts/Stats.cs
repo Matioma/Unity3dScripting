@@ -5,28 +5,59 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
-    [SerializeField]
-    private int _health;
-
-
+    
     public event Action OnDeath;
+    public event Action OnHealthChange;
 
-    void Awake()
-    {
+
+    [Header ("Combat")]
+    [SerializeField]
+    int  _shieldDamage;
+    public int ShieldDamage {
+        get { return _shieldDamage; }
+        set { _shieldDamage = value; }
     }
+
+    [SerializeField]
+    int _swordDamage;
+    public int SwordDamage
+    {
+        get { return _swordDamage; }
+        set { _swordDamage = value; }
+    }
+
+    [Header("Stats")]
+    [SerializeField]
+    int _maxHealth;
+    public int MaxHeath {
+        get {return _maxHealth;}
+    }
+    [SerializeField]
+    int _health;
 
     public int Health {
         get { return _health; }
-        private set {     
+        private set {
+
             _health = value;
+            OnHealthChange?.Invoke();
             if (_health <= 0) {
-                Debug.Log("GG");
                 _health = 0;
                 Died();
-                
             }
         }
     }
+
+    public bool IsDead
+    {
+        get { return Health > 0; }
+    }
+
+    private void Awake()
+    {
+        Health = MaxHeath;
+    }
+
 
     public void DealDamage(int amount) {
         Health -= amount;

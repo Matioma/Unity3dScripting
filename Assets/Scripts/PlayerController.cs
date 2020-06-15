@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour
         consecutiveInputTimer = 0;
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
+
+
+
     }
 
 
@@ -47,7 +50,6 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("DashLeft")) {

@@ -4,19 +4,18 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class AbilityManager : MonoBehaviour
 {
-    public int damage=4;
-
+    [Header ("Simple Dash")]
     [SerializeField]
     float dashDistance=0;
     [SerializeField]
     float dashTime=0;
-
-
     float timer;
 
 
+
+    [Header("Dash Behind")]
     [SerializeField]
-    float distanceBehind;
+    float distanceBehind =1;
 
 
 
@@ -24,9 +23,6 @@ public class AbilityManager : MonoBehaviour
 
 
     Rigidbody rb;
-
-
-    List<Weapon> unitWeapons;
 
     Sword sword;
     Shield shield;
@@ -73,24 +69,17 @@ public class AbilityManager : MonoBehaviour
         Dash(-transform.forward);
     
     }
-
     public void DashBehind(Transform target)
     {
         if (target == null) return;
 
-
-        //Debug.Log(target.forward);
-
-
         transform.position = target.position;
         transform.position += -target.forward * distanceBehind;
-
 
         Vector3 relativePosition = target.position - transform.position;
         Quaternion rotationTowards=Quaternion.LookRotation(relativePosition);
 
         transform.rotation = Quaternion.Euler(0, rotationTowards.eulerAngles.y, 0);
-        //transform.LookAt(target);
     }
 
     void Dash(Vector3 direction)
@@ -99,31 +88,19 @@ public class AbilityManager : MonoBehaviour
         dashDirection = direction;
     }
 
-
     public void AttackShield() {
         if (shield.HitsSomething()) {
+            var damage = GetComponent<Stats>().ShieldDamage; 
             shield.OverLappedObject.GetComponent<Stats>()?.DealDamage(damage);
-
-
-            //Destroy(shield.OverLappedObject);
-            //Debug.Log("Hit Shield");
         }
-
-
-       
     }
-
     public void AttackSword()
     {
         if (sword.HitsSomething())
         {
+            var damage = GetComponent<Stats>().SwordDamage;
             sword.OverLappedObject.GetComponent<Stats>()?.DealDamage(damage);
-            //Destroy(sword.OverLappedObject);
-            //Debug.Log("Hit Sword");
-            //sword.OverLappedObject.
-
         }
-       
     }
 
 

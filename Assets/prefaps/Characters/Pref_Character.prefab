@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 629955091}
   - component: {fileID: 1784365516488527753}
   m_Layer: 0
-  m_Name: Pref_CharacterBase 1
+  m_Name: Pref_Character
   m_TagString: Destructable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,4 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e17afe303a5d1547b086ed7120bbbc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shieldDamage: 0
+  _swordDamage: 0
+  _maxHealth: 10
   _health: 10
