@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-
+    public Transform target;
 
 
     Animator animator;
@@ -57,6 +57,12 @@ public class PlayerController : MonoBehaviour
             GetComponent<AbilityManager>().DashBack();
             pressedBackTwice = false;
         }
+        if (Input.GetButtonDown("DashBehindTarget")) {
+            GetComponent<AbilityManager>().DashBehind(target);
+
+        }
+
+
 
 
         pressedBackTwice = IsDashBackTriggered();

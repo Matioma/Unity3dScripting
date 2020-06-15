@@ -28,8 +28,6 @@ public class Follow : MonoBehaviour
 
         defaultRotation = transform.rotation;
         offset = transform.position - target.position;
-
-
     }
 
     // Update is called once per frame

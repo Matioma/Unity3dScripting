@@ -14,6 +14,10 @@ public class AbilityManager : MonoBehaviour
     float timer;
 
 
+    [SerializeField]
+    float distanceBehind;
+
+
 
     Vector3 dashDirection;
 
@@ -49,11 +53,21 @@ public class AbilityManager : MonoBehaviour
     
     }
 
+    public void DashBehind(Transform target)
+    {
+        if (target == null) return;
 
+
+        transform.position = -target.transform.forward * distanceBehind;
+        //transform.LookAt(target);
+    }
 
     void Dash(Vector3 direction)
     {
         timer = 0;
         dashDirection = direction;
     }
+
+
+
 }
