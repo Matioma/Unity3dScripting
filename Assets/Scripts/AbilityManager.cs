@@ -6,9 +6,9 @@ using UnityEngine;
 public class AbilityManager : MonoBehaviour
 {
     [SerializeField]
-    float dashDistance;
+    float dashDistance=0;
     [SerializeField]
-    float dashTime;
+    float dashTime=0;
 
 
     float timer;
@@ -58,7 +58,17 @@ public class AbilityManager : MonoBehaviour
         if (target == null) return;
 
 
-        transform.position = -target.transform.forward * distanceBehind;
+        //Debug.Log(target.forward);
+
+
+        transform.position = target.position;
+        transform.position += -target.forward * distanceBehind;
+
+
+        Vector3 relativePosition = target.position - transform.position;
+        Quaternion rotationTowards=Quaternion.LookRotation(relativePosition);
+
+        transform.rotation = Quaternion.Euler(0, rotationTowards.eulerAngles.y, 0);
         //transform.LookAt(target);
     }
 
