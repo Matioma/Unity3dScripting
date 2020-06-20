@@ -86,4 +86,10 @@ public class EnemyController : BaseController
             animator.SetTrigger("Attack");
         }
     }
+
+
+    private void OnDestroy()
+    {
+        LevelManager.Instance.enemies.Remove(transform);
+    }
 }

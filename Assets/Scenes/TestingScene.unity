@@ -653,6 +653,49 @@ Transform:
   m_Father: {fileID: 1081844684}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &266918541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 266918543}
+  - component: {fileID: 266918542}
+  m_Layer: 0
+  m_Name: LevelManger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &266918542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266918541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e2bb0ea2fcb39499a61faa5e811930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &266918543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266918541}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -22.00299, y: 21.338915, z: 26.863829}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &279787361 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8103819910024332339, guid: 381f18985b8e68d469c90cd64cd13c31,
@@ -1601,7 +1644,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835764591}
   m_LocalRotation: {x: 0.13052616, y: -0, z: -0, w: 0.9914449}
-  m_LocalPosition: {x: 56.206905, y: 11.94051, z: 2.7629776}
+  m_LocalPosition: {x: 56.206905, y: 11.94051, z: 16.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 776584939}
@@ -1982,6 +2025,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onGroundRayHeight
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046217280189131599, guid: a37ed2769e64aab40a374b808cbe160c,
+        type: 3}
+      propertyPath: angleToSelectTarget
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3653726858460549942, guid: a37ed2769e64aab40a374b808cbe160c,
         type: 3}

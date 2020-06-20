@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(AbilityManager))]
@@ -22,6 +23,11 @@ public class PlayerConroller : BaseController
     float consecutiveInputTimer;
     bool pressedBackTwice;
 
+
+    [SerializeField]
+    float angleToSelectTarget = 10f;
+
+
     private void Awake()
     { 
       
@@ -33,12 +39,9 @@ public class PlayerConroller : BaseController
         consecutiveInputTimer = 0;
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
-    }
 
+        GetComponent<AbilityManager>().onTargetChange += targetChanged;
 
-    private void FixedUpdate()
-    {
-        
     }
 
     public void  Update()
@@ -70,6 +73,7 @@ public class PlayerConroller : BaseController
         {
             GetComponent<AbilityManager>().DashBehind();
         }
+        UpdateJumpTarget();
     }
 
     void MoveForward()
@@ -112,16 +116,27 @@ public class PlayerConroller : BaseController
         }
         return false;
     }
-    //bool isOnGround()
-    //{
-    //    RaycastHit raycastHit;
-    //    Debug.DrawRay(transform.position, Vector3.down);
 
-    //    if (Physics.Raycast(transform.position, Vector3.down, out raycastHit, 10f))
-    //    {
-    //        return true;
-    //    }
-    //    return false;
+    void UpdateJumpTarget() {
+        foreach (var obj in LevelManager.Instance.enemies) {
+            Vector3 forwardVector = transform.forward;
+            Vector3 directionToTarget = (obj.transform.position - transform.position).normalized;
 
-    //}
+            //Debug.Log(Vector3.Dot(forwardVector, directionToTarget));
+
+            if (Vector3.Dot(forwardVector, directionToTarget) >= Math.Cos(angleToSelectTarget)) {
+         
+                GetComponent<AbilityManager>().Target = obj;
+                //obj.GetComponentInChildren<TargetIndicator>()?.Select();
+
+                break;
+            }        
+        }
+    }
+
+
+    void targetChanged() { 
+        
+    
+    }
 }

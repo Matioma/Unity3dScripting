@@ -1,25 +1,31 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+
+
+
 
 [RequireComponent(typeof(Rigidbody))]
 public class AbilityManager : MonoBehaviour
 {
-    [Header ("Simple Dash")]
+   
+
+    [Header("Simple Dash")]
     [SerializeField]
-    float dashDistance=0;
+    float dashDistance = 0;
     [SerializeField]
-    float dashTime=0;
+    float dashTime = 0;
     float timer;
 
 
 
     [Header("Dash Behind")]
     [SerializeField]
-    float distanceBehind =1;
+    float distanceBehind = 1;
 
     Vector3 dashDirection;
 
-   
+
 
 
     Rigidbody rb;
@@ -28,7 +34,27 @@ public class AbilityManager : MonoBehaviour
     Shield shield;
 
 
-    Transform target;
+    [SerializeField]
+    Transform _target;
+    public Transform Target {
+        get { return _target; }
+        set {
+            onTargetChange();
+            if (Target != null) {
+                Target?.GetComponentInChildren<TargetIndicator>().Deselect();
+            }
+            
+            _target = value;
+            if (Target != null)
+            {
+                Target?.GetComponentInChildren<TargetIndicator>().Select();
+            }
+        }
+    }
+
+    public Action onTargetChange;
+
+
 
 
     private void Start()
@@ -79,12 +105,12 @@ public class AbilityManager : MonoBehaviour
     }
     public void DashBehind()
     {
-        if (target == null) return;
+        if (Target == null) return;
 
-        transform.position = target.position;
-        transform.position += -target.forward * distanceBehind;
+        transform.position = Target.position;
+        transform.position += -Target.forward * distanceBehind;
 
-        Vector3 relativePosition = target.position - transform.position;
+        Vector3 relativePosition = Target.position - transform.position;
         Quaternion rotationTowards=Quaternion.LookRotation(relativePosition);
 
         transform.rotation = Quaternion.Euler(0, rotationTowards.eulerAngles.y, 0);
@@ -109,4 +135,5 @@ public class AbilityManager : MonoBehaviour
             sword.OverLappedObject.GetComponent<Stats>()?.DealDamage(damage);
         }
     }
+
 }
