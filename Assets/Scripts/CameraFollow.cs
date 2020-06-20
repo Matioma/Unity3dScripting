@@ -19,7 +19,7 @@ public class CameraFollow : MonoBehaviour
     
     void Start()
     {
-        target = FindObjectOfType<InputManager>().transform;
+        target = FindObjectOfType<PlayerConroller>().transform;
 
 
         defaultRotation = transform.rotation;

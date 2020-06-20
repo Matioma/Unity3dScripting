@@ -94,9 +94,8 @@ public class AbilityManager : MonoBehaviour
         timer = 0;
         dashDirection = direction;
     }
-
-
     public void AttackShield() {
+
         if (shield.HitsSomething()) {
             var damage = GetComponent<Stats>().ShieldDamage; 
             shield.OverLappedObject.GetComponent<Stats>()?.DealDamage(damage);

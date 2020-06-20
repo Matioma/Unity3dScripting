@@ -2,8 +2,9 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AbilityManager))]
-public class InputManager : MonoBehaviour
+public class PlayerConroller : BaseController
 {
+    [Header("PlayerController")]
     [SerializeField]
     float MaxSpeed;
     [SerializeField]
@@ -40,12 +41,9 @@ public class InputManager : MonoBehaviour
         
     }
 
-    void Update()
+    public void  Update()
     {
-       
-        
       
-
         pressedBackTwice = IsDashBackTriggered();
         consecutiveInputTimer -= Time.deltaTime;
 
@@ -66,7 +64,6 @@ public class InputManager : MonoBehaviour
             MoveForward();
             
         }
-
         Attack();
         Rotate();
         if (Input.GetButtonDown("DashBehindTarget"))
@@ -78,7 +75,7 @@ public class InputManager : MonoBehaviour
     void MoveForward()
     {
         var forwardInput = Input.GetAxis("Vertical");
-      
+
         if (forwardInput != 0)
         {
             animator.SetBool("Run", true);
@@ -115,16 +112,16 @@ public class InputManager : MonoBehaviour
         }
         return false;
     }
-    bool isOnGround()
-    {
-        RaycastHit raycastHit;
-        Debug.DrawRay(transform.position, Vector3.down);
+    //bool isOnGround()
+    //{
+    //    RaycastHit raycastHit;
+    //    Debug.DrawRay(transform.position, Vector3.down);
 
-        if (Physics.Raycast(transform.position, Vector3.down, out raycastHit, 10f))
-        {
-            return true;
-        }
-        return false;
+    //    if (Physics.Raycast(transform.position, Vector3.down, out raycastHit, 10f))
+    //    {
+    //        return true;
+    //    }
+    //    return false;
 
-    }
+    //}
 }

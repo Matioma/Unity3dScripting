@@ -4353,6 +4353,23 @@ Transform:
   m_Father: {fileID: 5653251578040715282}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3046217280189131599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9173131138991977146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72370f46227c3446b9e4705e9d57511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGroundRayHeight: 10
+  viewDistance: 30
+  MaxSpeed: 10
+  rotationSpeed: 180
+  consecutiveInputTime: 0.5
 --- !u!114 &3380040920685282123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4368,22 +4385,6 @@ MonoBehaviour:
   dashDistance: 2700
   dashTime: 0.2
   distanceBehind: 5
---- !u!114 &3653726858460549942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9173131138991977146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b204049818a55b2478df3e35ea5a1b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxSpeed: 10
-  rotationSpeed: 180
-  target: {fileID: 0}
-  consecutiveInputTime: 0.5
 --- !u!1 &8545667431479583875
 GameObject:
   m_ObjectHideFlags: 0
@@ -4643,6 +4644,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 913641380835201868, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9589f17314cd075478e96e026933c786, type: 2}
     - target: {fileID: 913641381072277981, guid: eba5f11f4f1c8924dae11a61469790f7,
         type: 3}
       propertyPath: m_Name
@@ -4707,6 +4713,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1784365516488527753, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: _health
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1784365516488527753, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: _maxHealth
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1784365516488527753, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: _shieldDamage
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1784365516488527753, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: _swordDamage
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eba5f11f4f1c8924dae11a61469790f7, type: 3}
