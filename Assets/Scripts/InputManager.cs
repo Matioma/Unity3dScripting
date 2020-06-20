@@ -2,19 +2,13 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AbilityManager))]
-public class PlayerController : MonoBehaviour
+public class InputManager : MonoBehaviour
 {
     [SerializeField]
     float MaxSpeed;
     [SerializeField]
     float rotationSpeed=10;
 
-
-    public Vector3 MoveVector { get; set; }
-
-
-
-    public Transform target;
 
 
     Animator animator;
@@ -25,7 +19,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float consecutiveInputTime = 0;
     float consecutiveInputTimer;
-
     bool pressedBackTwice;
 
     private void Awake()
@@ -39,9 +32,6 @@ public class PlayerController : MonoBehaviour
         consecutiveInputTimer = 0;
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
-
-
-
     }
 
 
@@ -52,34 +42,40 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("DashLeft")) {
-            GetComponent<AbilityManager>().DashLeft();
-        }
-        if (Input.GetButtonDown("DashRight"))
-        {
-            GetComponent<AbilityManager>().DashRight();
-        }
-        if (pressedBackTwice) {
-            GetComponent<AbilityManager>().DashBack();
-            pressedBackTwice = false;
-        }
-        if (Input.GetButtonDown("DashBehindTarget")) {
-            GetComponent<AbilityManager>().DashBehind(target);
-
-        }
-
-
-
+       
+        
+      
 
         pressedBackTwice = IsDashBackTriggered();
         consecutiveInputTimer -= Time.deltaTime;
 
+        if (isOnGround()) {
+            if (Input.GetButtonDown("DashLeft"))
+            {
+                GetComponent<AbilityManager>().DashLeft();
+            }
+            if (Input.GetButtonDown("DashRight"))
+            {
+                GetComponent<AbilityManager>().DashRight();
+            }
+            if (pressedBackTwice)
+            {
+                GetComponent<AbilityManager>().DashBack();
+                pressedBackTwice = false;
+            }
+            MoveForward();
+            
+        }
+
         Attack();
-        MoveForward();
         Rotate();
+        if (Input.GetButtonDown("DashBehindTarget"))
+        {
+            GetComponent<AbilityManager>().DashBehind();
+        }
     }
 
-    private void MoveForward()
+    void MoveForward()
     {
         var forwardInput = Input.GetAxis("Vertical");
       
@@ -94,33 +90,17 @@ public class PlayerController : MonoBehaviour
 
         rigidbody.velocity =new Vector3(0,rigidbody.velocity.y,0)+ transform.forward * forwardInput * MaxSpeed;
     }
-
-    private void Attack()
+    void Attack()
     {
         if (Input.GetButtonDown("Fire1"))
         {
             animator.SetTrigger("Attack");
         }
     }
-
     void Rotate() {
         float horizontalInput = Input.GetAxis("Horizontal");      
         transform.Rotate(new Vector3(0, horizontalInput * rotationSpeed * Time.deltaTime,0));
     }
-
-    bool isOnGround() {
-        RaycastHit raycastHit;
-        Debug.DrawRay(transform.position, Vector3.down);
-
-        if (Physics.Raycast(transform.position, Vector3.down, out raycastHit, 10f))
-        {
-            return true;
-        }
-        return false;
-    
-    }
-
-
     bool IsDashBackTriggered() {
         if (Input.GetButtonDown("S"))
         {
@@ -135,6 +115,16 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
+    bool isOnGround()
+    {
+        RaycastHit raycastHit;
+        Debug.DrawRay(transform.position, Vector3.down);
 
+        if (Physics.Raycast(transform.position, Vector3.down, out raycastHit, 10f))
+        {
+            return true;
+        }
+        return false;
 
+    }
 }

@@ -4377,13 +4377,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 9173131138991977146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fed41aface157847a1ecc5695a1129c, type: 3}
+  m_Script: {fileID: 11500000, guid: b204049818a55b2478df3e35ea5a1b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 10
-  rotationSpeed: 360
+  rotationSpeed: 180
   target: {fileID: 0}
-  consecutiveInputTime: 1
+  consecutiveInputTime: 0.5
 --- !u!1 &8545667431479583875
 GameObject:
   m_ObjectHideFlags: 0

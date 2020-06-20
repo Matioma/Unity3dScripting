@@ -17,9 +17,9 @@ public class AbilityManager : MonoBehaviour
     [SerializeField]
     float distanceBehind =1;
 
-
-
     Vector3 dashDirection;
+
+   
 
 
     Rigidbody rb;
@@ -27,6 +27,8 @@ public class AbilityManager : MonoBehaviour
     Sword sword;
     Shield shield;
 
+
+    Transform target;
 
 
     private void Start()
@@ -58,7 +60,13 @@ public class AbilityManager : MonoBehaviour
             timer += Time.fixedDeltaTime;
         }
     }
-   
+
+    public void Update()
+    {
+        
+    }
+
+
     public void DashLeft() {
         Dash(-transform.right);
     }
@@ -69,7 +77,7 @@ public class AbilityManager : MonoBehaviour
         Dash(-transform.forward);
     
     }
-    public void DashBehind(Transform target)
+    public void DashBehind()
     {
         if (target == null) return;
 
@@ -81,12 +89,12 @@ public class AbilityManager : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, rotationTowards.eulerAngles.y, 0);
     }
-
     void Dash(Vector3 direction)
     {
         timer = 0;
         dashDirection = direction;
     }
+
 
     public void AttackShield() {
         if (shield.HitsSomething()) {
@@ -102,7 +110,4 @@ public class AbilityManager : MonoBehaviour
             sword.OverLappedObject.GetComponent<Stats>()?.DealDamage(damage);
         }
     }
-
-
-
 }

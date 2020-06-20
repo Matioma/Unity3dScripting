@@ -20,5 +20,4 @@ abstract public class Weapon : MonoBehaviour
             OverLappedObject = other.gameObject;
         }
     }
-
 }
