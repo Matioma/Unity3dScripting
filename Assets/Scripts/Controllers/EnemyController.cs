@@ -28,6 +28,8 @@ public class EnemyController : BaseController
 
 
 
+    bool playerDetected = false;
+
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -48,15 +50,19 @@ public class EnemyController : BaseController
     
     private void Update()
     {
-        Movement();
+        MovementAnimation();
         GoToTarget();
 
         if (canSee(_target)) {
+
             Attack();
         }
     }
+    
 
-    private void Movement()
+
+
+    private void MovementAnimation()
     {
         Vector3 planeMovement = new Vector3(navMeshAgent.velocity.x, 0, navMeshAgent.velocity.z);
 
@@ -70,15 +76,32 @@ public class EnemyController : BaseController
         }
     }
 
+
+
     void GoToTarget()
     {
-        if (canSee(_target)) {
-            Vector3 targetVector = _target.transform.position;
-            navMeshAgent.SetDestination(targetVector);
+        if (_target != null)
+        {
+            if (canSee(_target) && !playerDetected)
+            {
+                playerDetected = true;
+
+            }
+
+            if (playerDetected)
+            {
+                Vector3 targetVector = _target.transform.position;
+                navMeshAgent.SetDestination(targetVector);
+            }
         }
     }
 
     void Attack() {
+
+        if (_target == null) {
+            return;
+        }
+
         Vector3 targetVector = _target.position - transform.position;
 
         if (targetVector.sqrMagnitude <= attackRange * attackRange) {

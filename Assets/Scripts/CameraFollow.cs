@@ -29,6 +29,10 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (target == null) {
+            return;
+        }
+
         if (Input.GetButton("Fire3"))
         {
             float mouseX = Input.GetAxis("Mouse X");

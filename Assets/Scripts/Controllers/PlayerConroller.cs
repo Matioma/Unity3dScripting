@@ -33,8 +33,6 @@ public class PlayerConroller : BaseController
     { 
       
     }
-
-
     void Start()
     {
         consecutiveInputTimer = 0;
@@ -47,7 +45,10 @@ public class PlayerConroller : BaseController
 
     public void  Update()
     {
-      
+
+        if (!GetComponent<Stats>().IsAlive) {
+            return;
+        }
         pressedBackTwice = IsDashBackTriggered();
         consecutiveInputTimer -= Time.deltaTime;
 
@@ -119,7 +120,6 @@ public class PlayerConroller : BaseController
     }
 
     void TargetInFront() {
-        List<Transform> possibleTargets;
         foreach (var obj in LevelManager.Instance.enemies) {
             if (inFront(obj)) {
                 Vector3 forwardVector = new Vector3(transform.forward.x, 0, transform.forward.z);

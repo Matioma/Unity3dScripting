@@ -38,7 +38,6 @@ public class Stats : MonoBehaviour
     public int Health {
         get { return _health; }
         private set {
-
             _health = value;
             OnHealthChange?.Invoke();
             if (_health <= 0) {
@@ -48,7 +47,7 @@ public class Stats : MonoBehaviour
         }
     }
 
-    public bool IsDead
+    public bool IsAlive
     {
         get { return Health > 0; }
     }
