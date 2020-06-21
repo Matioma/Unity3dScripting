@@ -6,6 +6,8 @@ abstract public class Weapon : MonoBehaviour
 {
     public GameObject OverLappedObject{get; private set;}
 
+
+
     public bool HitsSomething() {
         if (OverLappedObject != null) {
             return true;
@@ -15,9 +17,15 @@ abstract public class Weapon : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.transform.CompareTag("Destructable"))
-        {
+        if (other.transform.GetComponent<Stats>() != null) {
             OverLappedObject = other.gameObject;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == OverLappedObject) {
+            OverLappedObject = null;
         }
     }
 }

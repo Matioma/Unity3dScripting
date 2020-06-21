@@ -103,7 +103,6 @@ public class EnemyController : BaseController
         }
 
         Vector3 targetVector = _target.position - transform.position;
-
         if (targetVector.sqrMagnitude <= attackRange * attackRange) {
 
             animator.SetTrigger("Attack");

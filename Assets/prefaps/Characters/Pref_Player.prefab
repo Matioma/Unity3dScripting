@@ -4370,6 +4370,7 @@ MonoBehaviour:
   MaxSpeed: 10
   rotationSpeed: 180
   consecutiveInputTime: 0.5
+  angleToSelectTarget: 10
 --- !u!114 &3380040920685282123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4385,6 +4386,7 @@ MonoBehaviour:
   dashDistance: 2700
   dashTime: 0.2
   distanceBehind: 5
+  _target: {fileID: 0}
 --- !u!1 &8545667431479583875
 GameObject:
   m_ObjectHideFlags: 0
@@ -4657,7 +4659,7 @@ PrefabInstance:
     - target: {fileID: 913641381072277981, guid: eba5f11f4f1c8924dae11a61469790f7,
         type: 3}
       propertyPath: m_TagString
-      value: Destructable
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 913641381072637437, guid: eba5f11f4f1c8924dae11a61469790f7,
         type: 3}

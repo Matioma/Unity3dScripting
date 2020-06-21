@@ -120,18 +120,23 @@ public class AbilityManager : MonoBehaviour
         dashDirection = direction;
     }
     public void AttackShield() {
-
         if (shield.HitsSomething()) {
-            var damage = GetComponent<Stats>().ShieldDamage; 
-            shield.OverLappedObject.GetComponent<Stats>()?.DealDamage(damage);
+            if (shield.OverLappedObject.tag != gameObject.tag)
+            {
+                var damage = GetComponent<Stats>().ShieldDamage;
+                shield.OverLappedObject.GetComponent<Stats>()?.DealDamage(damage);
+            }
         }
     }
     public void AttackSword()
     {
         if (sword.HitsSomething())
         {
-            var damage = GetComponent<Stats>().SwordDamage;
-            sword.OverLappedObject.GetComponent<Stats>()?.DealDamage(damage);
+            if (sword.OverLappedObject.tag != gameObject.tag) {
+                var damage = GetComponent<Stats>().SwordDamage;
+                sword.OverLappedObject.GetComponent<Stats>()?.DealDamage(damage);
+            }
+           
         }
     }
 
