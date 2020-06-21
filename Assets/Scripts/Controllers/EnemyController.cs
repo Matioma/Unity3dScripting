@@ -90,6 +90,12 @@ public class EnemyController : BaseController
 
     private void OnDestroy()
     {
-        LevelManager.Instance.enemies.Remove(transform);
+        if (LevelManager.Instance == null) {
+            return;
+        }
+        if (LevelManager.Instance.enemies.Contains(transform)) {
+            LevelManager.Instance.enemies.Remove(transform);
+        }
+        
     }
 }

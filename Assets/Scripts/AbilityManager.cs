@@ -42,8 +42,7 @@ public class AbilityManager : MonoBehaviour
             onTargetChange();
             if (Target != null) {
                 Target?.GetComponentInChildren<TargetIndicator>().Deselect();
-            }
-            
+            }            
             _target = value;
             if (Target != null)
             {

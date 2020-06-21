@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AbilityManager))]
@@ -73,7 +74,7 @@ public class PlayerConroller : BaseController
         {
             GetComponent<AbilityManager>().DashBehind();
         }
-        UpdateJumpTarget();
+        TargetInFront();
     }
 
     void MoveForward()
@@ -117,20 +118,37 @@ public class PlayerConroller : BaseController
         return false;
     }
 
-    void UpdateJumpTarget() {
+    void TargetInFront() {
+        List<Transform> possibleTargets;
         foreach (var obj in LevelManager.Instance.enemies) {
-            Vector3 forwardVector = transform.forward;
-            Vector3 directionToTarget = (obj.transform.position - transform.position).normalized;
+            if (inFront(obj)) {
+                Vector3 forwardVector = new Vector3(transform.forward.x, 0, transform.forward.z);
+                Vector3 directionToTargetNotmalized = (obj.transform.position - transform.position).normalized;
+                Vector3 directionToTargetWithoutY = new Vector3(directionToTargetNotmalized.x, 0, directionToTargetNotmalized.z);
 
-            //Debug.Log(Vector3.Dot(forwardVector, directionToTarget));
 
-            if (Vector3.Dot(forwardVector, directionToTarget) >= Math.Cos(angleToSelectTarget)) {
-         
-                GetComponent<AbilityManager>().Target = obj;
-                //obj.GetComponentInChildren<TargetIndicator>()?.Select();
+                
 
-                break;
-            }        
+
+                if (Math.Acos(Vector3.Dot(forwardVector, directionToTargetWithoutY)) <= Mathf.Deg2Rad*angleToSelectTarget)
+                {
+                    var abilityManger = GetComponent<AbilityManager>();
+
+                    //if (abilityManger.Target != null)
+                    //{
+                    //    //if ((obj.position - transform.position).sqrMagnitude < (abilityManger.Target.position - transform.position).sqrMagnitude)
+                    //    //{
+                    //    //    GetComponent<AbilityManager>().Target = obj;
+                    //    //    break;
+                    //    //}
+                    //}
+                    //else {
+
+                    //}
+                    GetComponent<AbilityManager>().Target = obj;
+                    break;
+                }
+            }
         }
     }
 
