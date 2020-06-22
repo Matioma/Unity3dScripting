@@ -23,12 +23,7 @@ public class ObjectiveList : MonoBehaviour
         foreach (var objective in FindObjectsOfType<Objective>()) {
             var toggleElement= AddObjective(objective);
 
-            objective.onObjectiveCompleted += () => { toggleElement.isOn = objective.IsCompleted;
-                Debug.Log("Objective");
-            };
-            //objective.onObjectiveCompleted +=()=> { UpdateToggleState(toggleElement, objective);
-            //    Debug.Log("TEst done");
-            //};
+            objective.onObjectiveCompleted += () => { toggleElement.isOn = objective.IsCompleted;};
         }
     }
 
