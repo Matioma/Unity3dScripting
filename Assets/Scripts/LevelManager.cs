@@ -19,12 +19,20 @@ public class LevelManager : MonoBehaviour
     }
     public readonly List<Transform> enemies =new List<Transform>();
 
+
+
+    public readonly List<Objective> Objectives = new List<Objective>();
     
     void Start()
     {
         Instance = this;
-        foreach (var obj in FindObjectsOfType<EnemyController>()) {
-            enemies.Add(obj.transform);
+        foreach (var enemyController in FindObjectsOfType<EnemyController>()) {
+            enemies.Add(enemyController.transform);
+        }
+
+        foreach (var objective in FindObjectsOfType<Objective>()) {
+            Objectives.Add(objective);
+        
         }
     }
 
@@ -35,4 +43,7 @@ public class LevelManager : MonoBehaviour
             _instance = null;
         }
     }
+
+
+
 }
