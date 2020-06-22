@@ -126,7 +126,7 @@ public class PlayerConroller : BaseController
         if (LevelManager.Instance == null) {
             return;
         }
-        foreach (var obj in LevelManager.Instance.enemies) {
+        foreach (var obj in LevelManager.Instance.targets) {
             if (inFront(obj)) {
                 Vector3 forwardVector = new Vector3(transform.forward.x, 0, transform.forward.z);
                 Vector3 directionToTargetNotmalized = (obj.transform.position - transform.position).normalized;

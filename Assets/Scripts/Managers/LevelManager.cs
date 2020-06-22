@@ -25,10 +25,7 @@ public class LevelManager : MonoBehaviour
             }
         }
     }
-    public readonly List<Transform> enemies =new List<Transform>();
-
-
-
+    public readonly List<Transform> targets =new List<Transform>();
     public readonly List<Objective> objectives = new List<Objective>();
     
 
@@ -38,21 +35,21 @@ public class LevelManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        foreach (var enemyController in FindObjectsOfType<EnemyController>()) {
-            enemies.Add(enemyController.transform);
+        foreach (var enemyController in FindObjectsOfType<Targetable>()) {
+            targets.Add(enemyController.transform);
         }
 
         foreach (var objective in FindObjectsOfType<Objective>()) {
             objectives.Add(objective);
             objective.onObjectiveCompleted += levelPassed;
         }
+
     }
 
     private void Update()
     {
         HandleDelayedAction();
     }
-
 
     void levelPassed() {
         if (areObjectivesFullfilled()) {
@@ -88,7 +85,6 @@ public class LevelManager : MonoBehaviour
             }
         }
     }
-
     public void OpenSceneDelayed(string Scene, float time) {
         delayedAction = new DelayedAction(time, () => { SceneManager.LoadScene(Scene); });
     }

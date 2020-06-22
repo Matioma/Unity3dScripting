@@ -115,8 +115,8 @@ public class EnemyController : BaseController
         if (LevelManager.Instance == null) {
             return;
         }
-        if (LevelManager.Instance.enemies.Contains(transform)) {
-            LevelManager.Instance.enemies.Remove(transform);
+        if (LevelManager.Instance.targets.Contains(transform)) {
+            LevelManager.Instance.targets.Remove(transform);
         }
         
     }

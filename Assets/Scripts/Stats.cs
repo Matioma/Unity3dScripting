@@ -46,7 +46,6 @@ public class Stats : MonoBehaviour
             }
         }
     }
-
     public bool IsAlive
     {
         get { return Health > 0; }
@@ -64,7 +63,10 @@ public class Stats : MonoBehaviour
     }
 
     void Died() {
-        OnDeath?.Invoke();
+        if (OnDeath != null) {
+            OnDeath();
+        }
+        //OnDeath?.Invoke();
         DeathAnimation();
         Destroy(this.gameObject,5);
     }
@@ -72,7 +74,6 @@ public class Stats : MonoBehaviour
 
     public void DeathAnimation() {
         GetComponent<Animator>()?.SetTrigger("Died");
-    
     }
 
 }

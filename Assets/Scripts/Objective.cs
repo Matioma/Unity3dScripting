@@ -16,11 +16,4 @@ public class Objective : MonoBehaviour
         onObjectiveCompleted += () => { IsCompleted = true; };
         GetComponent<Stats>().OnDeath += onObjectiveCompleted;
     }
-
-
-    private void OnDestroy()
-    {
-    }
-
-
 }
