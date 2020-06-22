@@ -5,14 +5,24 @@ using UnityEngine;
 
 public class Objective : MonoBehaviour
 {
+    public bool IsCompleted { get; private set; }
 
-    public Action onObjectiveConpleted;
 
+    public Action onObjectiveCompleted;
     public string objectiveMessage;
+
+    private void Start()
+    {
+        onObjectiveCompleted += () => { IsCompleted = true; };
+        GetComponent<Stats>().OnDeath += onObjectiveCompleted;
+    }
+
 
     private void OnDestroy()
     {
-        onObjectiveConpleted?.Invoke();
-        Debug.Log("Objective achieved "  + objectiveMessage);
+        //onObjectiveCompleted?.Invoke();
+        //Debug.Log("Objective achieved "  + objectiveMessage);
     }
+
+
 }
