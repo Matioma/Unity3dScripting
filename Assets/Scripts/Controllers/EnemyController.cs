@@ -39,7 +39,7 @@ public class EnemyController : BaseController
         }
 
 
-        _target = FindObjectOfType<PlayerConroller>().transform;
+        _target = FindObjectOfType<PlayerController>().transform;
 
         if (navMeshAgent == null)
         {
@@ -88,7 +88,7 @@ public class EnemyController : BaseController
 
             }
 
-            if (playerDetected)
+            if (playerDetected && _target.GetComponent<Stats>().IsAlive)
             {
                 Vector3 targetVector = _target.transform.position;
                 navMeshAgent.SetDestination(targetVector);
@@ -99,6 +99,10 @@ public class EnemyController : BaseController
     void Attack() {
 
         if (_target == null) {
+            return;
+        }
+
+        if (!_target.GetComponent<Stats>().IsAlive) {
             return;
         }
 

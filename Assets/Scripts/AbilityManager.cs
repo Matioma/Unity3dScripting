@@ -118,13 +118,6 @@ public class AbilityManager : MonoBehaviour
     {
         timer = 0;
         dashDirection = direction;
-
-
-        //Debug.DrawLine(transform.position, transform.position+)
-        //direction += new Vector3(0, 0.3f);
-        //direction.Normalize();
-        //Debug.DrawLine(transform.position, transform.position + direction * 100, Color.green, 10f);
-        //rb.AddForce((direction)* 10, ForceMode.Impulse);
     }
     public void AttackShield() {
         if (shield.HitsSomething()) {

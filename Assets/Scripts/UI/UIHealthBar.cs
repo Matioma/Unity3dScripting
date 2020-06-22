@@ -9,7 +9,7 @@ public class UIHealthBar : MonoBehaviour
 
     private void Start()
     {
-            stats = FindObjectOfType<PlayerConroller>().GetComponent<Stats>();
+            stats = FindObjectOfType<PlayerController>().GetComponent<Stats>();
             stats.OnHealthChange += updateUI;
     }
 

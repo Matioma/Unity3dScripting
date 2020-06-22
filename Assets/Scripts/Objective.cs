@@ -8,12 +8,17 @@ public class Objective : MonoBehaviour
     public bool IsCompleted { get; private set; }
 
 
-    public Action onObjectiveCompleted;
+    public event Action onObjectiveCompleted;
     public string objectiveMessage;
 
     private void Start()
     {
-        onObjectiveCompleted += () => { IsCompleted = true; };
-        GetComponent<Stats>().OnDeath += onObjectiveCompleted;
+        GetComponent<Stats>().OnDeath += ObjectiveIsDone;
     }
+
+    void ObjectiveIsDone() {
+        IsCompleted = true;
+        onObjectiveCompleted?.Invoke();    
+    }
+
 }

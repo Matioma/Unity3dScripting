@@ -1,8 +1,5 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,9 +9,6 @@ public class LevelManager : MonoBehaviour
     public string targetScene="Level1";
 
     static LevelManager _instance;
-
-
-
 
     public static LevelManager Instance {
         get { return _instance; }
@@ -27,10 +21,11 @@ public class LevelManager : MonoBehaviour
     }
     public readonly List<Transform> targets =new List<Transform>();
     public readonly List<Objective> objectives = new List<Objective>();
-    
 
 
     private DelayedAction delayedAction;
+
+    public event Action onObjectiveStateChange;
 
     void Awake()
     {
@@ -41,20 +36,22 @@ public class LevelManager : MonoBehaviour
 
         foreach (var objective in FindObjectsOfType<Objective>()) {
             objectives.Add(objective);
-            objective.onObjectiveCompleted += levelPassed;
+
+            //Delayed handle
+            objective.onObjectiveCompleted += PassLevel;
         }
 
+        //onObjectiveStateChange += PassLevel;
     }
 
     private void Update()
     {
-        HandleDelayedAction();
+        HandleDelayedActions();
     }
 
-    void levelPassed() {
+    void PassLevel() {
         if (areObjectivesFullfilled()) {
-            SceneManager.LoadScene(targetScene);
-            Debug.Log("Level Passed");
+            OpenSceneDelayed(targetScene,1f);
         }    
     }
     bool areObjectivesFullfilled() {
@@ -75,12 +72,15 @@ public class LevelManager : MonoBehaviour
      
 
 
-    void HandleDelayedAction()
+    void HandleDelayedActions()
     {
-        if (delayedAction != null) {
-            if (delayedAction.Update()) {
+        if (delayedAction != null)
+        {
+            if (delayedAction.Update())
+            {
             }
-            else{
+            else
+            {
                 delayedAction = null;
             }
         }
@@ -88,6 +88,4 @@ public class LevelManager : MonoBehaviour
     public void OpenSceneDelayed(string Scene, float time) {
         delayedAction = new DelayedAction(time, () => { SceneManager.LoadScene(Scene); });
     }
-
-
 }

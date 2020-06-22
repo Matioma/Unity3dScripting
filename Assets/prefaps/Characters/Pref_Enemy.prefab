@@ -5022,6 +5022,11 @@ PrefabInstance:
       propertyPath: _swordDamage
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1784365516488527753, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: _maxHealth
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eba5f11f4f1c8924dae11a61469790f7, type: 3}
 --- !u!4 &8103819910024332339 stripped

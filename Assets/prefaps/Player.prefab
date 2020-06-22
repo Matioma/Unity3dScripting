@@ -138,40 +138,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2479739721620572721}
     m_Modifications:
-    - target: {fileID: 547977984125194100, guid: a37ed2769e64aab40a374b808cbe160c,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3046217280189131599, guid: a37ed2769e64aab40a374b808cbe160c,
-        type: 3}
-      propertyPath: onGroundRayHeight
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3046217280189131599, guid: a37ed2769e64aab40a374b808cbe160c,
-        type: 3}
-      propertyPath: angleToSelectTarget
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653726858460549942, guid: a37ed2769e64aab40a374b808cbe160c,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7720070459116006638, guid: a37ed2769e64aab40a374b808cbe160c,
-        type: 3}
-      propertyPath: _shieldDamage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7720070459116006638, guid: a37ed2769e64aab40a374b808cbe160c,
-        type: 3}
-      propertyPath: _swordDamage
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7720070459116006638, guid: a37ed2769e64aab40a374b808cbe160c,
         type: 3}
       propertyPath: _maxHealth
-      value: 150
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720070459116006638, guid: a37ed2769e64aab40a374b808cbe160c,
+        type: 3}
+      propertyPath: _health
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9173131138991977146, guid: a37ed2769e64aab40a374b808cbe160c,
         type: 3}

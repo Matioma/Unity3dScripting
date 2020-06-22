@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,7 +34,31 @@ public abstract class BaseController : MonoBehaviour
 
                 if (Physics.Raycast(transform.position, rayDirection, out raycast, viewDistance))
                 {
-                    if (raycast.transform.GetComponent<PlayerConroller>() != null)
+                    if (raycast.transform.GetComponent<PlayerController>() != null)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+
+    protected bool canSee(Transform target , Type type)
+    {
+        if (target != null)
+        {
+            if (inFront(target))
+            {
+                RaycastHit raycast;
+                Vector3 rayDirection = target.transform.position - transform.position;
+
+                if (Physics.Raycast(transform.position, rayDirection, out raycast, viewDistance))
+                {
+                    if(type == typeof(EnemyController))
+
+                    if (raycast.transform.GetComponent<EnemyController>() != null)
                     {
                         return true;
                     }

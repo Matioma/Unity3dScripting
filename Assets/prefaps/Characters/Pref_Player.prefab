@@ -4362,7 +4362,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9173131138991977146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d72370f46227c3446b9e4705e9d57511, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c55052339a17a44387290b934a3dae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onGroundRayHeight: 10
@@ -4724,7 +4724,7 @@ PrefabInstance:
     - target: {fileID: 1784365516488527753, guid: eba5f11f4f1c8924dae11a61469790f7,
         type: 3}
       propertyPath: _maxHealth
-      value: 150
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1784365516488527753, guid: eba5f11f4f1c8924dae11a61469790f7,
         type: 3}
