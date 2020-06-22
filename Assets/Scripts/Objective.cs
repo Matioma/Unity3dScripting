@@ -20,8 +20,6 @@ public class Objective : MonoBehaviour
 
     private void OnDestroy()
     {
-        //onObjectiveCompleted?.Invoke();
-        //Debug.Log("Objective achieved "  + objectiveMessage);
     }
 
 

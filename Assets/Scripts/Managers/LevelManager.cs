@@ -35,7 +35,7 @@ public class LevelManager : MonoBehaviour
 
     private DelayedAction delayedAction;
 
-    void Start()
+    void Awake()
     {
         Instance = this;
         foreach (var enemyController in FindObjectsOfType<EnemyController>()) {
@@ -45,7 +45,6 @@ public class LevelManager : MonoBehaviour
         foreach (var objective in FindObjectsOfType<Objective>()) {
             objectives.Add(objective);
             objective.onObjectiveCompleted += levelPassed;
-            
         }
     }
 
@@ -56,21 +55,18 @@ public class LevelManager : MonoBehaviour
 
 
     void levelPassed() {
-        if (allObjectiveComplete()) {
+        if (areObjectivesFullfilled()) {
             SceneManager.LoadScene(targetScene);
             Debug.Log("Level Passed");
         }    
     }
-    bool allObjectiveComplete() {
+    bool areObjectivesFullfilled() {
         foreach (var objective in objectives) {
             if (objective.IsCompleted == false) {
                 return false;
             }
         }
-
         return true;
-    
-
     }
     void OnDestroy()
     {
