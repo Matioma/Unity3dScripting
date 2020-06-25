@@ -977,6 +977,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1695036236240425287, guid: a37ed2769e64aab40a374b808cbe160c,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3046217280189131599, guid: a37ed2769e64aab40a374b808cbe160c,
         type: 3}
       propertyPath: m_Enabled

@@ -21,6 +21,7 @@ public class LevelManager : MonoBehaviour
     }
     public readonly List<Transform> targets =new List<Transform>();
     public readonly List<Objective> objectives = new List<Objective>();
+    public List<AbilityManager> abilityManagers = new List<AbilityManager>();
 
 
     private DelayedAction delayedAction;
@@ -33,6 +34,8 @@ public class LevelManager : MonoBehaviour
 
 
 
+
+
         foreach (var enemyController in FindObjectsOfType<Targetable>()) {
             targets.Add(enemyController.transform);
         }
@@ -40,6 +43,11 @@ public class LevelManager : MonoBehaviour
             objectives.Add(objective);
 
             objective.onObjectiveCompleted += PassLevel;
+        }
+
+        foreach (var manager in FindObjectsOfType<AbilityManager>()) {
+            abilityManagers.Add(manager);
+
         }
 
     }
