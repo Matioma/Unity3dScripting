@@ -30,18 +30,18 @@ public class LevelManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+
+
+
         foreach (var enemyController in FindObjectsOfType<Targetable>()) {
             targets.Add(enemyController.transform);
         }
-
         foreach (var objective in FindObjectsOfType<Objective>()) {
             objectives.Add(objective);
 
-            //Delayed handle
             objective.onObjectiveCompleted += PassLevel;
         }
 
-        //onObjectiveStateChange += PassLevel;
     }
 
     private void Update()

@@ -5,7 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameSettings : MonoBehaviour
 {
-    public static GameSettings Instance { get; private set; }
+
+
+    private static GameSettings _instance = null;
+    public static GameSettings Instance { 
+        get { return _instance; } 
+        private set{_instance =value;} 
+    }
 
     [SerializeField]
     [Header("Level Data")]

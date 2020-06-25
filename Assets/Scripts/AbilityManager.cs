@@ -25,6 +25,19 @@ public class AbilityManager : MonoBehaviour
 
     Vector3 dashDirection;
 
+    public Vector3 GetDashDirection() {
+        return dashDirection;
+    }
+
+    public Vector3 LocalDashDirection{ get; set; }
+
+    bool dashFinished = false;
+
+
+
+    public event Action onDashStart;
+    public event Action onDashEnd;
+
 
 
 
@@ -33,6 +46,9 @@ public class AbilityManager : MonoBehaviour
     Sword sword;
     Shield shield;
 
+
+    public event Action onSwordHit;
+    public event Action onShieldHit;
 
     [SerializeField]
     Transform _target;
@@ -79,10 +95,18 @@ public class AbilityManager : MonoBehaviour
 
     public void FixedUpdate()
     {
+
+        //while dashing add a force in a direction
         if (timer < dashTime)
         {
-            rb.AddForce(dashDirection*dashDistance,ForceMode.Force);
+            rb.AddForce(dashDirection * dashDistance, ForceMode.Force);
             timer += Time.fixedDeltaTime;
+        }
+        else {
+            if (dashFinished == false) {
+                dashFinished = true;
+                onDashEnd?.Invoke();
+            }
         }
     }
 
@@ -94,30 +118,43 @@ public class AbilityManager : MonoBehaviour
 
     public void DashLeft() {
         Dash(-transform.right);
+        //LocalDashDirection = new Vector3(1, 0, 0);
+
     }
     public void DashRight() {
         Dash(transform.right);
+        //LocalDashDirection = new Vector3(-1,0,0);
     }
     public void DashBack() {
         Dash(-transform.forward);
-    
+        //LocalDashDirection = new Vector3(0, 0, -1);
     }
     public void DashBehind()
     {
         if (Target == null) return;
+        
 
+        //Set the position behind the enemy
         transform.position = Target.position;
-        transform.position += -Target.forward * distanceBehind;
+        transform.position += -Target.forward * distanceBehind; 
 
-        Vector3 relativePosition = Target.position - transform.position;
-        Quaternion rotationTowards=Quaternion.LookRotation(relativePosition);
+
+        
+        Vector3 relativePosition = Target.position - transform.position; //get vector from target to player
+        Quaternion rotationTowards=Quaternion.LookRotation(relativePosition); // Look towards target
 
         transform.rotation = Quaternion.Euler(0, rotationTowards.eulerAngles.y, 0);
     }
     void Dash(Vector3 direction)
     {
+        //initializes Dashing in a specific direction
+        dashFinished = false;
+
+       
         timer = 0;
         dashDirection = direction;
+
+        onDashStart?.Invoke();
     }
     public void AttackShield() {
         if (shield.HitsSomething()) {
@@ -125,6 +162,7 @@ public class AbilityManager : MonoBehaviour
             {
                 var damage = GetComponent<Stats>().ShieldDamage;
                 shield.OverLappedObject.GetComponent<Stats>()?.DealDamage(damage);
+                onShieldHit?.Invoke();            
             }
         }
     }
@@ -135,9 +173,9 @@ public class AbilityManager : MonoBehaviour
             if (sword.OverLappedObject.tag != gameObject.tag) {
                 var damage = GetComponent<Stats>().SwordDamage;
                 sword.OverLappedObject.GetComponent<Stats>()?.DealDamage(damage);
+
+                onSwordHit?.Invoke();
             }
-           
         }
     }
-
 }
