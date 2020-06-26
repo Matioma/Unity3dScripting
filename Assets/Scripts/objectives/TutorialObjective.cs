@@ -19,6 +19,9 @@ public class TutorialObjective : Objective
     }
 
     protected override void DoneOneObjective() {
+        if (IsCompleted) {
+            return;
+        }
         questLine.AddNextQuest();
 
         ObjectiveIsDone();

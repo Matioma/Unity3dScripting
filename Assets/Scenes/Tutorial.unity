@@ -751,6 +751,7 @@ MonoBehaviour:
   ObjectiveOrder:
   - {fileID: -4937596634158512763, guid: 6ad2fea27299eef4e93215fcea3a8bbc, type: 3}
   - {fileID: -8514564513835931919, guid: 1ffef65695e1458418049dcecf9122c3, type: 3}
+  - {fileID: 1919125736138434956, guid: 6fb73dd8e433108459e97a7d4c2240fc, type: 3}
 --- !u!1001 &1132416751
 PrefabInstance:
   m_ObjectHideFlags: 0

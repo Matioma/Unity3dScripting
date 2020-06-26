@@ -37,6 +37,9 @@ public class LevelManager : MonoBehaviour
         foreach (var enemyController in FindObjectsOfType<Targetable>()) {
             targets.Add(enemyController.transform);
         }
+
+
+        //Finds All objectives in the scene
         foreach (var objective in FindObjectsOfType<Objective>()) {
             objectives.Add(objective);
 
@@ -64,6 +67,12 @@ public class LevelManager : MonoBehaviour
             OpenSceneDelayed(targetScene, 1f);
         }
     }
+
+
+    /// <summary>
+    /// Checks if all objectives in the scene have been fullfilled
+    /// </summary>
+    /// <returns></returns>
     bool areObjectivesFullfilled() {
         foreach (var objective in objectives) {
             if (objective.IsCompleted == false) {
@@ -75,11 +84,18 @@ public class LevelManager : MonoBehaviour
 
 
 
+
+    /// <summary>
+    /// Adds new level Objective
+    /// </summary>
+    /// <param name="objective"></param>
     public void AddNewObjective(Objective objective)
     {
         objectives.Add(objective);
         objective.onObjectiveCompleted += PassLevel;
     }
+
+
     void OnDestroy()
     {
 
@@ -87,7 +103,6 @@ public class LevelManager : MonoBehaviour
             _instance = null;
         }
     }
-
 
 
     void HandleDelayedActions()
