@@ -158,6 +158,9 @@ public class AbilityManager : MonoBehaviour
         onDashStart?.Invoke();
     }
     public void AttackShield() {
+        if (shield == null) {
+            return;
+        }
         if (shield.HitsSomething()) {
 
             //If does not hit object of same tye
@@ -177,6 +180,9 @@ public class AbilityManager : MonoBehaviour
     }
     public void AttackSword()
     {
+        if (sword == null) {
+            return;
+        }
         if (sword.HitsSomething())
         {
             if (sword.OverLappedObject.tag != gameObject.tag) {

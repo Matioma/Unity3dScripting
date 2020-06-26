@@ -9720,6 +9720,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1398946284184005447, guid: eba5f11f4f1c8924dae11a61469790f7,
         type: 3}
+      propertyPath: stepSound.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398946284184005447, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
       propertyPath: swordHit
       value: 
       objectReference: {fileID: 8300000, guid: 89afb8fb84ce2354b81bcd31b53adb86, type: 3}
@@ -9733,6 +9738,46 @@ PrefabInstance:
       propertyPath: weaponSwing
       value: 
       objectReference: {fileID: 8300000, guid: 36b6608038ab65e469f069b7496b94b1, type: 3}
+    - target: {fileID: 1398946284184005447, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: swordHitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 89afb8fb84ce2354b81bcd31b53adb86, type: 3}
+    - target: {fileID: 1398946284184005447, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: shieldHitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 89afb8fb84ce2354b81bcd31b53adb86, type: 3}
+    - target: {fileID: 1398946284184005447, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: weaponSwingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 36b6608038ab65e469f069b7496b94b1, type: 3}
+    - target: {fileID: 1398946284184005447, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: stepSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f78540227bf6a44488c5664fe599073a, type: 3}
+    - target: {fileID: 1398946284184005447, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: stepSound.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: f78540227bf6a44488c5664fe599073a, type: 3}
+    - target: {fileID: 1398946284184005447, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: stepSound.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: e53384238bfbc1843bfc4313d7efd15d, type: 3}
+    - target: {fileID: 1398946284184005447, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: stepSound.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 40cf62b4bf4443c4eb5113f21b05c731, type: 3}
+    - target: {fileID: 1398946284184005447, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: stepSound.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2941c3907a07fb24eaa1e8a52c25a1ac, type: 3}
     - target: {fileID: 1784365516488527753, guid: eba5f11f4f1c8924dae11a61469790f7,
         type: 3}
       propertyPath: _health
@@ -9752,6 +9797,26 @@ PrefabInstance:
         type: 3}
       propertyPath: _swordDamage
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853786461152756067, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853786461152756067, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: m_Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853786461152756067, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853786461152756067, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eba5f11f4f1c8924dae11a61469790f7, type: 3}

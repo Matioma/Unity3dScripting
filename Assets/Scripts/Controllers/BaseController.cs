@@ -9,7 +9,16 @@ public abstract class BaseController : MonoBehaviour
     [SerializeField]protected float onGroundRayHeight=10;
 
     [SerializeField] protected float viewDistance=30;
-  
+
+    public event Action onStepping;
+
+
+
+    public void Stepped() {
+        onStepping?.Invoke();
+    }
+
+
 
     protected bool isOnGround()
     {
