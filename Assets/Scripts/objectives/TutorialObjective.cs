@@ -5,19 +5,23 @@ using UnityEngine;
 
 public class TutorialObjective : Objective
 {
+    ObjectiveList objectiveList;
+    QuestLine questLine;
 
-    [SerializeField]
-    TutorialObjective objectiveToAdd;
-
-
-    void Start()
+    protected void Start()
     {
+        questLine = transform.parent.GetComponent<QuestLine>();
+        //Debug.Log(transform.parent.name);
+
+
+        objectiveList = FindObjectOfType<ObjectiveList>();
+        objectiveList?.AddObjective(GetComponent<Objective>());
     }
 
+    protected override void DoneOneObjective() {
+        questLine.AddNextQuest();
 
-    protected override void ObjectiveIsDone() {
-        Debug.Log("Objective");
-        base.ObjectiveIsDone();
+        ObjectiveIsDone();
     }
 
 

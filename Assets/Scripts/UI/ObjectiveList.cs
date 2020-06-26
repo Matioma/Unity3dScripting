@@ -18,18 +18,17 @@ public class ObjectiveList : MonoBehaviour
      
 
 
-    void Start()
+    void Awake()
     {
         foreach (var objective in FindObjectsOfType<Objective>()) {
             var toggleElement= AddObjective(objective);
 
-            objective.onObjectiveCompleted += () => { toggleElement.isOn = objective.IsCompleted;};
+            //objective.onObjectiveCompleted += () => { toggleElement.isOn = objective.IsCompleted;};
         }
     }
 
 
     public Toggle AddObjective(Objective objective) {
-
         // Creates a new togle item
         var toggle = Instantiate(objectivePrefab, transform);
         displayedObjectives.Add(toggle);
@@ -41,6 +40,10 @@ public class ObjectiveList : MonoBehaviour
         toggle.isOn = objective.IsCompleted;
         //Add quest Message
         toggle.GetComponentInChildren<Text>().text = objective.objectiveMessage;
+
+
+
+        objective.onObjectiveCompleted += () => { toggle.isOn = objective.IsCompleted; };
         return toggle;
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Objective : MonoBehaviour
 {
-    public bool IsCompleted { get; private set; }
+    public bool IsCompleted { get; protected set; }
 
 
     public event Action onObjectiveCompleted;
@@ -17,10 +17,12 @@ public class Objective : MonoBehaviour
         {
             GetComponent<Stats>().OnDeath += ObjectiveIsDone;
         }
-        
     }
 
-    protected virtual void ObjectiveIsDone() {
+    protected virtual void DoneOneObjective() {}
+
+
+    protected void ObjectiveIsDone() {
         IsCompleted = true;
         onObjectiveCompleted?.Invoke();    
     }

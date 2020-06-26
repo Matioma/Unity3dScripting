@@ -59,10 +59,9 @@ public class LevelManager : MonoBehaviour
     /// Action to be done on finishing all objectives
     /// </summary>
     void PassLevel() {
+
         if (areObjectivesFullfilled()) {
             OpenSceneDelayed(targetScene, 1f);
-
-            
         }
     }
     bool areObjectivesFullfilled() {
@@ -72,6 +71,14 @@ public class LevelManager : MonoBehaviour
             }
         }
         return true;
+    }
+
+
+
+    public void AddNewObjective(Objective objective)
+    {
+        objectives.Add(objective);
+        objective.onObjectiveCompleted += PassLevel;
     }
     void OnDestroy()
     {
