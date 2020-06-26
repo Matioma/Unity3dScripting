@@ -30,6 +30,9 @@ public class EnemyController : BaseController
 
     bool playerDetected = false;
 
+
+    Stats stats;
+
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -39,7 +42,14 @@ public class EnemyController : BaseController
         }
 
 
+
+
         _target = FindObjectOfType<PlayerController>().transform;
+
+
+        stats = GetComponent<Stats>();
+        stats.onDamgeReceive += () => { playerDetected = true; };
+
 
         if (navMeshAgent == null)
         {
@@ -88,7 +98,7 @@ public class EnemyController : BaseController
 
             }
 
-            if (playerDetected && _target.GetComponent<Stats>().IsAlive)
+            if (playerDetected && _target.GetComponent<Stats>().IsAlive && stats.IsAlive)
             {
                 Vector3 targetVector = _target.transform.position;
                 navMeshAgent.SetDestination(targetVector);
