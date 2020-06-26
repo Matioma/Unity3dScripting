@@ -28,12 +28,18 @@ public class ObjectiveList : MonoBehaviour
     }
 
 
-    Toggle AddObjective(Objective objective) {
+    public Toggle AddObjective(Objective objective) {
+
+        // Creates a new togle item
         var toggle = Instantiate(objectivePrefab, transform);
         displayedObjectives.Add(toggle);
+
+
+        //Set toggle item at appropriete position
         toggle.transform.localPosition = StartPostion + new Vector3(0,-displayedObjectives.Count * distanceBetweenObjectives ,0);
 
         toggle.isOn = objective.IsCompleted;
+        //Add quest Message
         toggle.GetComponentInChildren<Text>().text = objective.objectiveMessage;
         return toggle;
     }

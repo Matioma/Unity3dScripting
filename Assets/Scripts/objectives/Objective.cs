@@ -13,10 +13,14 @@ public class Objective : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<Stats>().OnDeath += ObjectiveIsDone;
+        if(GetComponent<Stats>() != null)
+        {
+            GetComponent<Stats>().OnDeath += ObjectiveIsDone;
+        }
+        
     }
 
-    void ObjectiveIsDone() {
+    protected virtual void ObjectiveIsDone() {
         IsCompleted = true;
         onObjectiveCompleted?.Invoke();    
     }
