@@ -4593,6 +4593,7 @@ MonoBehaviour:
   dashTime: 0.2
   distanceBehind: 5
   _target: {fileID: 0}
+  dashBehindCoolDown: 2
 --- !u!1 &8545667431479583875
 GameObject:
   m_ObjectHideFlags: 0

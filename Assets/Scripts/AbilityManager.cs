@@ -72,6 +72,14 @@ public class AbilityManager : MonoBehaviour
 
 
 
+    [SerializeField]
+    float dashBehindCoolDown;
+
+
+    Timer dashBehindTimer = new Timer();
+    Timer dashLeftTimer = new Timer();
+
+
 
     private void Start()
     {
@@ -94,6 +102,13 @@ public class AbilityManager : MonoBehaviour
     }
 
 
+    private void Update()
+    {
+        dashBehindTimer.Update();
+        dashLeftTimer.Update();
+    }
+
+
     public void FixedUpdate()
     {
 
@@ -111,36 +126,32 @@ public class AbilityManager : MonoBehaviour
         }
     }
 
-    public void Update()
-    {
-        
-    }
-
-
     public void DashLeft() {
         Dash(-transform.right);
-        //LocalDashDirection = new Vector3(1, 0, 0);
 
     }
     public void DashRight() {
         Dash(transform.right);
-        //LocalDashDirection = new Vector3(-1,0,0);
     }
     public void DashBack() {
         Dash(-transform.forward);
-        //LocalDashDirection = new Vector3(0, 0, -1);
     }
     public void DashBehind()
     {
         if (Target == null) return;
-        
+
+        //check if the cooldown ended;
+        if (!dashBehindTimer.HasEnded) {
+            return;
+        }
+        dashBehindTimer.SetTimer(dashBehindCoolDown);
+
 
         //Set the position behind the enemy
         transform.position = Target.position;
         transform.position += -Target.forward * distanceBehind; 
 
 
-        
         Vector3 relativePosition = Target.position - transform.position; //get vector from target to player
         Quaternion rotationTowards=Quaternion.LookRotation(relativePosition); // Look towards target
 
@@ -151,7 +162,13 @@ public class AbilityManager : MonoBehaviour
         //initializes Dashing in a specific direction
         dashFinished = false;
 
-       
+        if (!dashLeftTimer.HasEnded)
+        {
+            return;
+        }
+        dashLeftTimer.SetTimer(dashBehindCoolDown);
+
+
         timer = 0;
         dashDirection = direction;
 

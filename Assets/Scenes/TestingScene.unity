@@ -2227,6 +2227,7 @@ MonoBehaviour:
   dashTime: 0
   distanceBehind: 1
   _target: {fileID: 0}
+  dashBehindCoolDown: 0
 --- !u!1 &416396734
 GameObject:
   m_ObjectHideFlags: 0
@@ -2613,6 +2614,7 @@ MonoBehaviour:
   dashTime: 0
   distanceBehind: 1
   _target: {fileID: 0}
+  dashBehindCoolDown: 0
 --- !u!1001 &520288484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2779,6 +2781,7 @@ MonoBehaviour:
   dashTime: 0
   distanceBehind: 1
   _target: {fileID: 0}
+  dashBehindCoolDown: 0
 --- !u!1 &554481755
 GameObject:
   m_ObjectHideFlags: 0
@@ -3833,6 +3836,7 @@ MonoBehaviour:
   dashTime: 0
   distanceBehind: 1
   _target: {fileID: 0}
+  dashBehindCoolDown: 0
 --- !u!1001 &874263136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4073,6 +4077,7 @@ MonoBehaviour:
   dashTime: 0
   distanceBehind: 1
   _target: {fileID: 0}
+  dashBehindCoolDown: 0
 --- !u!4 &991885118 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 159390622654562879, guid: c51d25ae83dde2b42a3cc8c058e585b6,
@@ -4887,6 +4892,7 @@ MonoBehaviour:
   dashTime: 0
   distanceBehind: 1
   _target: {fileID: 0}
+  dashBehindCoolDown: 0
 --- !u!1001 &1193531411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5123,6 +5129,7 @@ MonoBehaviour:
   dashTime: 0
   distanceBehind: 1
   _target: {fileID: 0}
+  dashBehindCoolDown: 0
 --- !u!1 &1360331753
 GameObject:
   m_ObjectHideFlags: 0
@@ -5401,6 +5408,7 @@ MonoBehaviour:
   dashTime: 0
   distanceBehind: 1
   _target: {fileID: 0}
+  dashBehindCoolDown: 0
 --- !u!4 &1469399906 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4326247580731288, guid: 225337266f16dc04aa201f020490e7cb,
@@ -6056,6 +6064,7 @@ MonoBehaviour:
   dashTime: 0
   distanceBehind: 1
   _target: {fileID: 0}
+  dashBehindCoolDown: 0
 --- !u!1 &1682452996
 GameObject:
   m_ObjectHideFlags: 0
@@ -6447,6 +6456,7 @@ MonoBehaviour:
   dashTime: 0
   distanceBehind: 1
   _target: {fileID: 0}
+  dashBehindCoolDown: 0
 --- !u!1 &1764633973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8103819910024173587, guid: 381f18985b8e68d469c90cd64cd13c31,
@@ -6475,6 +6485,7 @@ MonoBehaviour:
   dashTime: 0
   distanceBehind: 1
   _target: {fileID: 0}
+  dashBehindCoolDown: 0
 --- !u!4 &1770514891 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4326247580731288, guid: 225337266f16dc04aa201f020490e7cb,
@@ -7002,6 +7013,7 @@ MonoBehaviour:
   dashTime: 0
   distanceBehind: 1
   _target: {fileID: 0}
+  dashBehindCoolDown: 0
 --- !u!1 &1943465624 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8103819910024173587, guid: 381f18985b8e68d469c90cd64cd13c31,
@@ -7030,6 +7042,7 @@ MonoBehaviour:
   dashTime: 0
   distanceBehind: 1
   _target: {fileID: 0}
+  dashBehindCoolDown: 0
 --- !u!4 &1989139716 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5481639546301236366, guid: e7988cc467b1a864c92aa9337cdee57d,
@@ -7107,6 +7120,7 @@ MonoBehaviour:
   dashTime: 0
   distanceBehind: 1
   _target: {fileID: 0}
+  dashBehindCoolDown: 0
 --- !u!4 &1997905391 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 544166976116348617, guid: 56c5f5984872d7646b95176033564839,
@@ -7678,7 +7692,7 @@ AudioReverbZone:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2074947165}
-  m_Enabled: 1
+  m_Enabled: 0
   m_MinDistance: 104.55
   m_MaxDistance: 104.55
   m_ReverbPreset: 17
@@ -8084,6 +8098,16 @@ PrefabInstance:
         type: 3}
       propertyPath: angleToSelectTarget
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 901176688205416958, guid: cefbee04dfc6b0e4eb84bf9750390b54,
+        type: 3}
+      propertyPath: dashCoolDown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 901176688205416958, guid: cefbee04dfc6b0e4eb84bf9750390b54,
+        type: 3}
+      propertyPath: dashBehindCoolDown
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2479739721620572720, guid: cefbee04dfc6b0e4eb84bf9750390b54,
         type: 3}

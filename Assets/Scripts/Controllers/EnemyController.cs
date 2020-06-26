@@ -53,7 +53,6 @@ public class EnemyController : BaseController
 
         if (navMeshAgent == null)
         {
-
             Debug.LogError("Nav agent component is not attached to " + gameObject.name);
         }
     }
