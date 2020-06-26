@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public string targetScene="Level1";
+    public string targetScene = "Level1";
 
     static LevelManager _instance;
 
@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
             }
         }
     }
-    public readonly List<Transform> targets =new List<Transform>();
+    public readonly List<Transform> targets = new List<Transform>();
     public readonly List<Objective> objectives = new List<Objective>();
     public List<AbilityManager> abilityManagers = new List<AbilityManager>();
 
@@ -60,8 +60,10 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     void PassLevel() {
         if (areObjectivesFullfilled()) {
-            OpenSceneDelayed(targetScene,1f);
-        }    
+            OpenSceneDelayed(targetScene, 1f);
+
+            
+        }
     }
     bool areObjectivesFullfilled() {
         foreach (var objective in objectives) {
@@ -73,12 +75,12 @@ public class LevelManager : MonoBehaviour
     }
     void OnDestroy()
     {
-        
+
         if (this == _instance) {
             _instance = null;
         }
     }
-     
+
 
 
     void HandleDelayedActions()
@@ -104,5 +106,17 @@ public class LevelManager : MonoBehaviour
     /// <param name="time"></param>
     public void OpenSceneDelayed(string Scene, float time) {
         delayedAction = new DelayedAction(time, () => { SceneManager.LoadScene(Scene); });
+        GameSettings.Instance?.UpdateSoundVolume();
+    }
+
+    public void OpenScene(string sceneName) {
+        SceneManager.LoadScene(sceneName);
+        GameSettings.Instance?.UpdateSoundVolume();
+    }
+
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
