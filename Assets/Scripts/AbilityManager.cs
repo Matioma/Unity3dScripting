@@ -49,6 +49,7 @@ public class AbilityManager : MonoBehaviour
 
     public event Action onSwordHit;
     public event Action onShieldHit;
+    public event Action onWeaponSwinging;
 
     [SerializeField]
     Transform _target;
@@ -158,13 +159,20 @@ public class AbilityManager : MonoBehaviour
     }
     public void AttackShield() {
         if (shield.HitsSomething()) {
+
+            //If does not hit object of same tye
             if (shield.OverLappedObject.tag != gameObject.tag)
             {
                 var damage = GetComponent<Stats>().ShieldDamage;
                 shield.OverLappedObject.GetComponent<Stats>()?.DealDamage(damage);
-              
-                onShieldHit?.Invoke();            
+
+                onShieldHit?.Invoke();
             }
+            
+        }
+        else       
+        {
+            onWeaponSwinging?.Invoke();
         }
     }
     public void AttackSword()
@@ -177,6 +185,10 @@ public class AbilityManager : MonoBehaviour
            
                 onSwordHit?.Invoke();
             }
+        }
+        else
+        {
+            onWeaponSwinging?.Invoke();
         }
     }
 }

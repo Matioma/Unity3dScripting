@@ -9728,6 +9728,11 @@ PrefabInstance:
       propertyPath: shieldHit
       value: 
       objectReference: {fileID: 8300000, guid: 89afb8fb84ce2354b81bcd31b53adb86, type: 3}
+    - target: {fileID: 1398946284184005447, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: weaponSwing
+      value: 
+      objectReference: {fileID: 8300000, guid: 36b6608038ab65e469f069b7496b94b1, type: 3}
     - target: {fileID: 1784365516488527753, guid: eba5f11f4f1c8924dae11a61469790f7,
         type: 3}
       propertyPath: _health

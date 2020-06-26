@@ -9,6 +9,8 @@ public class AudioUnit : MonoBehaviour
     [SerializeField]
     AudioClip shieldHit;
 
+    [SerializeField]
+    AudioClip weaponSwing;
 
 
     Sword sword;
@@ -30,23 +32,16 @@ public class AudioUnit : MonoBehaviour
         shield = GetComponentInChildren<Shield>();
 
 
-        var swordAudioSource = sword.GetComponent<AudioSource>();
-        if (swordAudioSource != null)
-        {
-            swordAudioSource.clip = swordHit;
-        }
 
-        var shieldAudioSource = shield.GetComponent<AudioSource>();
-        if (shieldAudioSource != null)
-        {
-            shieldAudioSource.clip = shieldHit;
-        }
-
+        // Subscribe all sound effects
         var abilityManager = GetComponent<AbilityManager>();
         if (abilityManager != null)
         {
-            abilityManager.onShieldHit += () => { sword.GetComponent<AudioSource>()?.PlayOneShot(swordHit); };
+            abilityManager.onSwordHit += () => { sword.GetComponent<AudioSource>()?.PlayOneShot(swordHit); };
             abilityManager.onShieldHit += () => { shield.GetComponent<AudioSource>()?.PlayOneShot(shieldHit); };
+
+            abilityManager.onSwordHit += () => { sword.GetComponent<AudioSource>()?.PlayOneShot(weaponSwing); };
+            abilityManager.onWeaponSwinging += () => { shield.GetComponent<AudioSource>()?.PlayOneShot(weaponSwing); };
         }
     }
 }
