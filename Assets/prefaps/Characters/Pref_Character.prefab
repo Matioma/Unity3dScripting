@@ -121,6 +121,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e53384238bfbc1843bfc4313d7efd15d, type: 3}
   - {fileID: 8300000, guid: 40cf62b4bf4443c4eb5113f21b05c731, type: 3}
   - {fileID: 8300000, guid: 2941c3907a07fb24eaa1e8a52c25a1ac, type: 3}
+  damageSound: {fileID: 8300000, guid: 381e1d823e7bdb04a95f6d6cf6c2910b, type: 3}
 --- !u!82 &1853786461152756067
 AudioSource:
   m_ObjectHideFlags: 0

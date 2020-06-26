@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Schema;
 using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
     
     public event Action OnDeath;
-    public event Action OnHealthChange;
+    public event Action onHealthChange;
+    public event Action onDamgeReceive;
 
 
     [Header ("Combat")]
@@ -38,8 +40,12 @@ public class Stats : MonoBehaviour
     public int Health {
         get { return _health; }
         private set {
+            if (_health > value) {
+                onDamgeReceive?.Invoke();
+            }
             _health = value;
-            OnHealthChange?.Invoke();
+            
+            onHealthChange?.Invoke();
             if (_health <= 0) {
                 _health = 0;
                 Died();

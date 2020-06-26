@@ -9778,6 +9778,11 @@ PrefabInstance:
       propertyPath: stepSound.Array.data[3]
       value: 
       objectReference: {fileID: 8300000, guid: 2941c3907a07fb24eaa1e8a52c25a1ac, type: 3}
+    - target: {fileID: 1398946284184005447, guid: eba5f11f4f1c8924dae11a61469790f7,
+        type: 3}
+      propertyPath: breathing
+      value: 
+      objectReference: {fileID: 8300000, guid: bb8469680aff7e7449b792253e4f22b2, type: 3}
     - target: {fileID: 1784365516488527753, guid: eba5f11f4f1c8924dae11a61469790f7,
         type: 3}
       propertyPath: _health

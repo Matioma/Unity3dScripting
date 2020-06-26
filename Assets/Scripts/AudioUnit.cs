@@ -15,19 +15,33 @@ public class AudioUnit : MonoBehaviour
     [SerializeField]
     AudioClip[] stepSound;
 
+    [SerializeField]
+    AudioClip damageSound;
+
     Sword sword;
     Shield shield;
 
 
-    
+
+    AudioSource audioSource;
 
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
+
+        GetComponent<Stats>().onDamgeReceive += AudioUnit_OnDamageReceive;
+        
 
         SetTheOnHitSounds();
     }
 
+    private void AudioUnit_OnDamageReceive()
+    {
+        //audioSource.PlayOneShot(damageSound);
+        //throw new System.NotImplementedException();
+    }
 
     private void SetTheOnHitSounds()
     {
@@ -63,8 +77,7 @@ public class AudioUnit : MonoBehaviour
             return;
         }
         int index = Random.Range(0, stepSound.Length);
-
-        var audioSource = GetComponent<AudioSource>();
+     
 
         if (audioSource != null) {
             audioSource.pitch = Random.Range(0.5f, 1f);

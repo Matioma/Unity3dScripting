@@ -10,13 +10,13 @@ public class UIHealthBar : MonoBehaviour
     private void Start()
     {
             stats = FindObjectOfType<PlayerController>().GetComponent<Stats>();
-            stats.OnHealthChange += updateUI;
+            stats.onHealthChange += updateUI;
     }
 
     private void OnDestroy()
     {
         if(stats!=null)
-            stats.OnHealthChange -= updateUI;
+            stats.onHealthChange -= updateUI;
     }
     void updateUI()
     {
