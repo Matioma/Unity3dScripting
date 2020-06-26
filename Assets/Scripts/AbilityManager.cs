@@ -43,8 +43,8 @@ public class AbilityManager : MonoBehaviour
 
     Rigidbody rb;
 
-    Sword sword;
-    Shield shield;
+    public Sword sword { get; private set; }
+    public Shield shield { get; private set; }
 
 
     public event Action onSwordHit;
@@ -162,6 +162,7 @@ public class AbilityManager : MonoBehaviour
             {
                 var damage = GetComponent<Stats>().ShieldDamage;
                 shield.OverLappedObject.GetComponent<Stats>()?.DealDamage(damage);
+              
                 onShieldHit?.Invoke();            
             }
         }
@@ -173,7 +174,7 @@ public class AbilityManager : MonoBehaviour
             if (sword.OverLappedObject.tag != gameObject.tag) {
                 var damage = GetComponent<Stats>().SwordDamage;
                 sword.OverLappedObject.GetComponent<Stats>()?.DealDamage(damage);
-
+           
                 onSwordHit?.Invoke();
             }
         }

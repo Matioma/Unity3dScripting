@@ -34,8 +34,6 @@ public class LevelManager : MonoBehaviour
 
 
 
-
-
         foreach (var enemyController in FindObjectsOfType<Targetable>()) {
             targets.Add(enemyController.transform);
         }
@@ -44,7 +42,6 @@ public class LevelManager : MonoBehaviour
 
             objective.onObjectiveCompleted += PassLevel;
         }
-
         foreach (var manager in FindObjectsOfType<AbilityManager>()) {
             abilityManagers.Add(manager);
 
@@ -57,6 +54,10 @@ public class LevelManager : MonoBehaviour
         HandleDelayedActions();
     }
 
+
+    /// <summary>
+    /// Action to be done on finishing all objectives
+    /// </summary>
     void PassLevel() {
         if (areObjectivesFullfilled()) {
             OpenSceneDelayed(targetScene,1f);
@@ -93,6 +94,14 @@ public class LevelManager : MonoBehaviour
             }
         }
     }
+
+
+
+    /// <summary>
+    /// Calls load scene with a delay
+    /// </summary>
+    /// <param name="Scene"></param>
+    /// <param name="time"></param>
     public void OpenSceneDelayed(string Scene, float time) {
         delayedAction = new DelayedAction(time, () => { SceneManager.LoadScene(Scene); });
     }

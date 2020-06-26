@@ -19,10 +19,14 @@ public class ParticleController : MonoBehaviour
 
     void Start()
     {
+
+        //Make sure the particle is not active
         particleSystem = GetComponent<ParticleSystem>();
         particleSystem.Stop();
-        //particleSystem.startSpeed = particlesSpeed;
 
+
+
+        //Subscribe to dashing events
         abilityManager = transform.parent.GetComponent<AbilityManager>();
         if (abilityManager != null)
         {
@@ -33,8 +37,12 @@ public class ParticleController : MonoBehaviour
             Debug.Log("Particle System is missing abilitymanager in parent " + transform.name);
         }
     }
-    
-    
+
+
+    /// <summary>
+    /// Initialize the particles in dash opposite direction
+    /// </summary>
+
     private void StartParticleSystem()
     {
         
@@ -50,10 +58,17 @@ public class ParticleController : MonoBehaviour
         particleSystem.Play();
     }
 
+
+
+    //Stop the parrticle sysyem
     private void StopParticleSystem() {      
         particleSystem.Stop();
     }
 
+
+    /// <summary>
+    /// Stop particle systems with a delay to ensure that particles are generated for long enough
+    /// </summary>
     private void StopParticles() {
         Invoke("StopParticleSystem", 0.5f);
     }

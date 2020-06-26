@@ -1420,6 +1420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetScene: Level1
+  abilityManagers: []
 --- !u!4 &266918543
 Transform:
   m_ObjectHideFlags: 0
@@ -3333,7 +3334,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -6390,7 +6391,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1761080168}
   - component: {fileID: 1761080167}
-  - component: {fileID: 1761080169}
   m_Layer: 0
   m_Name: PersistentObjects
   m_TagString: Untagged
@@ -6425,18 +6425,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1761080169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1761080166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f33f63119cfd65142bd9ea87d615d462, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1761805273 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8103819910024173587, guid: 381f18985b8e68d469c90cd64cd13c31,

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 629955090}
   - component: {fileID: 629955091}
   - component: {fileID: 1784365516488527753}
+  - component: {fileID: 1398946284184005447}
   m_Layer: 0
   m_Name: Pref_Character
   m_TagString: Destructable
@@ -44,7 +45,7 @@ Animator:
   m_GameObject: {fileID: 913641381072277981}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: edbf8c85268eff8488e6bbeb25fc11dd, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -99,3 +100,15 @@ MonoBehaviour:
   _swordDamage: 0
   _maxHealth: 10
   _health: 10
+--- !u!114 &1398946284184005447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913641381072277981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe26417eb5bb7d04fb101e7b8a18a9c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
