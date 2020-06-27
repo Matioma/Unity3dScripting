@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class DashLeft : TutorialObjective
 {
+    protected override void ObjectiveTask()
+    {
+        if (Input.GetButtonDown("DashLeft"))
+        {
+            DoneOneObjective();
+        }
+    }
 
 
     // Start is called before the first frame update
@@ -16,8 +23,10 @@ public class DashLeft : TutorialObjective
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("DashLeft")) {
-            DoneOneObjective();
-        }    
+        //if (Input.GetButtonDown("DashLeft")) {
+        //    DoneOneObjective();
+        //}    
+
+        ObjectiveTask();
     }
 }

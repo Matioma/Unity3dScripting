@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-public class TutorialObjective : Objective
+public abstract class TutorialObjective : Objective
 {
     ObjectiveList objectiveList;
     QuestLine questLine;
@@ -27,5 +27,9 @@ public class TutorialObjective : Objective
         ObjectiveIsDone();
     }
 
+
+
+
+    protected abstract void ObjectiveTask();
 
 }

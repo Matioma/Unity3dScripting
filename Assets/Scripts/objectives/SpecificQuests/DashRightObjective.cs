@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class DashRightObjective : TutorialObjective
 {
-
-    // Update is called once per frame
-    void Update()
+    protected override void ObjectiveTask()
     {
         if (Input.GetButtonDown("DashRight"))
         {
             DoneOneObjective();
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        ObjectiveTask();
     }
 }
