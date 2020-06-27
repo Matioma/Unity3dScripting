@@ -127,14 +127,21 @@ public class LevelManager : MonoBehaviour
     /// <param name="Scene"></param>
     /// <param name="time"></param>
     public void OpenSceneDelayed(string Scene, float time) {
+        GameSettings.Instance.onBeforeChangeScene();
         delayedAction = new DelayedAction(time, () => { SceneManager.LoadScene(Scene); });
-        GameSettings.Instance?.UpdateSoundVolume();
+        //GameSettings.Instance?.UpdateSoundVolume();
     }
 
     public void OpenScene(string sceneName) {
+        GameSettings.Instance.onBeforeChangeScene();
         SceneManager.LoadScene(sceneName);
-        GameSettings.Instance?.UpdateSoundVolume();
+        //GameSettings.Instance?.UpdateSoundVolume();
     }
+
+    public void RestartScene() {
+        OpenScene(GameSettings.Instance.previousSceneName);
+    }
+
 
 
     public void QuitGame()

@@ -16,6 +16,9 @@ public class audioController : MonoBehaviour
         if (audioSource != null) {
             initialVolume = audioSource.volume;
         }
+
+        audioSource.volume = initialVolume * GameSettings.volume;
+
     }
 
 

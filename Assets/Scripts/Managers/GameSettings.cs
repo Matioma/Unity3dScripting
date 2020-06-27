@@ -1,22 +1,24 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameSettings : MonoBehaviour
 {
-    
+
 
 
 
     private static GameSettings _instance = null;
-    public static GameSettings Instance { 
-        get { return _instance; } 
-        private set{_instance =value;} 
+    public static GameSettings Instance {
+        get { return _instance; }
+        private set { _instance = value; }
     }
 
 
+
+    public event Action OnSceneChange;
+
+    public string previousSceneName { get; private set; }
     
 
     
@@ -32,7 +34,7 @@ public class GameSettings : MonoBehaviour
 
 
 
-    public static float volume;
+    public static float volume =1;
     public void SetVolume(float value)
     {
         if (value == volume)
@@ -52,12 +54,17 @@ public class GameSettings : MonoBehaviour
     /// </summary>
     public void UpdateSoundVolume()
     {
-        foreach (var audioController in GameObject.FindObjectsOfType<audioController>())
-        {
-            audioController.SetVolume(volume);
-        }
+        //foreach (var audioController in GameObject.FindObjectsOfType<audioController>())
+        //{
+        //    audioController.SetVolume(volume);
+        //}
     }
 
+
+    public void onBeforeChangeScene() {
+        previousSceneName = SceneManager.GetActiveScene().name;
+        
+    }
 
 
 
@@ -66,6 +73,8 @@ public class GameSettings : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            //OnSceneChange += UpdateSoundVolume;
+
             DontDestroyOnLoad(gameObject);
         } else {
             Destroy(this.gameObject);
